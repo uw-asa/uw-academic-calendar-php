@@ -111,12 +111,12 @@ function academic_calendar($year) {
 }
 
 
-function academic_quarter($date) {
+function academic_quarter($date = 'now') {
     $date = new DateTime($date);
 
     for ($year = $date->format('Y'); ; $year++) {
 	$calendar = academic_calendar($year);
-	#print Dumper(%calendar);
+#	print_r($calendar);
 	for ($quarter = 1; $quarter <= 4; $quarter++) {
 	    if ( $date->format('Y-m-d') < $calendar{$quarter}{'end'} ) {
 		return array($year, $quarter);
